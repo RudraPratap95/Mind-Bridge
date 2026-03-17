@@ -110,7 +110,7 @@
 .cal-date-num {
   font-size: 13px;
   font-weight: 600;
-  color: var(--text- вторичный);
+  color: var(--text-secondary);
   z-index: 2;
 }
 
