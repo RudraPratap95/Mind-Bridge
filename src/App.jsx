@@ -44,7 +44,8 @@ export default function App() {
       
       // Fetch Real Journals from Backend
       try {
-        const res = await fetch('http://localhost:5000/api/journal', {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const res = await fetch(`${apiUrl}/api/journal`, {
           headers: { 'Authorization': token }
         })
         const data = await res.json()

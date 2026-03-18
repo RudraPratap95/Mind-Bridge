@@ -17,18 +17,30 @@ export default function ChatModal({ open, onClose }) {
     endRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, typing])
 
-  const send = () => {
+  const send = async () => {
     const msg = input.trim()
     if (!msg) return
     setInput('')
     const userMsg = { id: Date.now(), role: 'user', text: msg }
-    setMessages(prev => [...prev, userMsg])
+    const newMessages = [...messages, userMsg]
+    setMessages(newMessages)
     setTyping(true)
-    setTimeout(() => {
-      const reply = BOT_REPLIES[Math.floor(Math.random() * BOT_REPLIES.length)]
-      setMessages(prev => [...prev, { id: Date.now() + 1, role: 'bot', text: reply }])
+    
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: newMessages })
+      })
+      const data = await res.json()
+      setMessages(prev => [...prev, { id: Date.now() + 1, role: 'bot', text: data.reply || "No response received." }])
+    } catch (err) {
+      console.error(err)
+      setMessages(prev => [...prev, { id: Date.now() + 1, role: 'bot', text: "Sorry, I'm having trouble connecting to the secure server right now. 🌿" }])
+    } finally {
       setTyping(false)
-    }, 1400 + Math.random() * 600)
+    }
   }
 
   return (

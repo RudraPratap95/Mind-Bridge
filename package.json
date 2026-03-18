@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.79.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
@@ -23,5 +27,18 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "vite": "^8.0.0"
-  }
+  },
+  "description": "**MindBridge AI** is a modern, premium web application designed to bridge the gap between students and mental health support. It provides a safe, private space for students to journal their thoughts, track their emotional well-being, and access immediate calming tools, while allowing college counselors to monitor campus-wide emotional trends and intervene in high-risk situations anonymously.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RudraPratap95/Mind-Bridge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RudraPratap95/Mind-Bridge/issues"
+  },
+  "homepage": "https://github.com/RudraPratap95/Mind-Bridge#readme"
 }
